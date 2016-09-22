@@ -1,0 +1,27 @@
+<ion-view side="right" view-title="Edelweiss" title="Edelweiss" hide-back-button="true"
+    hide-nav-bar="false">
+  <ion-content class="">
+    <div class="padding">
+      <div class="logo center">
+      </div>
+    </div>
+    <div class="list">
+      <form name="panForm" novalidate>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">PAN number</span>
+          <input type="text" name="pan" placeholder="PAN number" ng-model="panForm.pf.phone" ng-required="true" ng-minlength="10" ng-maxlength="10">
+          <div class="app-error" ng-messages="panForm.pan.$error" ng-if="panForm.pan.$dirty">
+            <div ng-message="required">PAN is required.</div>
+            <div ng-message="minlength">PAN must be at least 10 characters long.</div>
+            <div ng-message="maxlength">PAN can be at most 10 characters long.</div>
+          </div>
+        </label>
+        <div class="padding">
+          <button class="button button-full button-small button-royal" ng-disabled="panForm.$invalid" ng-click="pc.verifyPAN()">
+            Verify PAN
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

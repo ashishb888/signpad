@@ -1,0 +1,68 @@
+<ion-view side="right" view-title="Register" title="Register" hide-back-button="true" hide-nav-bar="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear float-left" ui-sref="pan">
+      <i class="icon ion-android-arrow-back"></i>
+    </button>
+    <!--<button class="button button-clear" ui-sref="signin">
+      <i class="xlarge ion-android-arrow-back"></i>
+    </button>-->
+  </ion-nav-buttons>
+  <ion-content class="">
+    <div class="list">
+      <form name="registerForm" novalidate>
+        <!---->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Full name</span>
+          <input type="text" name="fullName" placeholder="Full name" ng-model="sc.sf.fullName" ng-required="true" ng-minlength="5" ng-maxlength="20">
+          <div class="app-error" ng-messages="registerForm.fullName.$error" ng-if="registerForm.fullName.$dirty">
+            <div ng-message="required">Name is required.</div>
+            <div ng-message="minlength">Name must be at least 5 characters long.</div>
+            <div ng-message="maxlength">Name can be at most 20 characters long.</div>
+          </div>
+        </label>
+
+        <!---->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Mobile number</span>
+          <input type="tel" name="phone" placeholder="Mobile number" ng-model="sc.sf.phone" ng-required="true" ng-minlength="10" ng-maxlength="10">
+          <div class="app-error" ng-messages="registerForm.phone.$error" ng-if="registerForm.phone.$dirty">
+            <div ng-message="required">Mobile number is required.</div>
+            <div ng-message="tel">Enter a valid mobile number.</div>
+            <div ng-message="minlength">Mobile number must be at least 10 digits long.</div>
+            <div ng-message="maxlength">Mobile number can be at most 10 digits long.</div>
+          </div>
+        </label>
+
+        <!---->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email(optional)</span>
+          <input type="email" name="email" placeholder="Email(optional)" ng-model="sc.sf.email">
+          <div class="app-error" ng-messages="registerForm.email.$error" ng-if="registerForm.email.$dirty">
+            <div ng-message="email">Enter a valid email address.</div>
+          </div>
+        </label>
+
+        <!---->
+        <div class="row padding">
+          <div class="col col-80 gray-clr">
+            Add image
+          </div>
+          <div class="col col-20">
+            <i class="icon ion-camera float-right xlarge gray-clr" ng-click="rc.imgsActionSheet()"></i>
+          </div>
+        </div>
+        <div class="card">
+          <div class="item item-text-wrap txt-ctr-align">
+            <img class="w50" ng-src="data:image/jpg;base64,{{rc.rf.chequeImgBase64}}" ng-click="epc.largeImg('dp')">
+          </div>
+        </div>
+
+        <div class="padding">
+          <button class="button button-full button-small button-royal" ng-disabled="registerForm.$invalid" ng-click="sc.signup()">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

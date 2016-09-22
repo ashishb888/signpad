@@ -1,0 +1,367 @@
+@import url(../font/OpenSans-Bold.ttf);
+@import url(../font/OpenSans-BoldItalic.ttf);
+@import url(../font/OpenSans-ExtraBold.ttf);
+@import url(../font/OpenSans-ExtraBoldItalic.ttf);
+@import url(../font/OpenSans-Italic.ttf);
+@import url(../font/OpenSans-Light.ttf);
+@import url(../font/OpenSans-LightItalic.ttf);
+@import url(../font/OpenSans-Regular.ttf);
+@import url(../font/OpenSans-Semibold.ttf);
+@import url(../font/OpenSans-SemiboldItalic.ttf);
+
+@import "mixins";
+
+@font-face {
+    font-family: 'OpenSans'; /*a name to be used later*/
+    src: url('../font/OpenSans-Regular.ttf'); /*URL to font*/
+}
+
+@font-face {
+    font-family: 'OpenSans-Semibold';
+    src: url('../font/OpenSans-Semibold.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url('../font/OpenSans-Light.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../font/OpenSans-Bold.ttf');
+}
+
+.open-sans {
+    @include text-font('OpenSans');
+}
+
+.open-sans-semibold {
+    @include text-font('OpenSans-Semibold');
+}
+
+.open-sans-light {
+    @include text-font('OpenSans-Light');
+}
+
+.open-sans-bold {
+    @include text-font('OpenSans-Bold');
+}
+
+/* Overriding positive */
+.button.button-positive {
+  background-color: $royal !important;
+}
+
+.topper {
+  margin-top: 10%;
+}
+
+.bottomer {
+    margin-bottom: 30px !important;
+}
+
+.c-center {
+    margin: auto;
+}
+
+.xlarge {
+  font-size: x-large !important;
+}
+
+.logo {
+  @extend .c-center;
+  content: url("../img/edelweiss-logo.jpg");
+  margin-top: 15%;
+  margin-bottom: 5%;
+  width: 90%;
+  @include border-radius(15px);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.popup {
+    background-color: #f0f0f0 !important;
+    border: 1px solid #ddd;
+    @include btn-rounded-corner(5px);
+}
+
+.popup-head {
+    border-bottom: 1px solid #ddd !important;
+}
+
+.app-error {
+    color: #B50404;
+    font-size: small;
+    white-space: initial;
+}
+
+.txt-right-align {
+  text-align: right !important;
+}
+
+.txt-left-align {
+  text-align: left;
+}
+
+.txt-ctr-align {
+  text-align: center !important;
+}
+
+.txt-underline {
+  text-decoration: underline;
+}
+
+.txt-color {
+  color: $royal !important;
+}
+
+.signin-links {
+  color: $royal;
+  @extend .txt-underline;
+  @extend .col;
+  @extend .col-50;
+}
+
+.signin-su {
+  @extend .signin-links;
+  @extend .txt-left-align;
+}
+
+.signin-fp {
+  @extend .signin-links;
+  @extend .txt-right-align;
+}
+
+.margin-auto {
+  margin: auto!important;
+}
+
+
+.transparent {
+  background: transparent !important;
+}
+
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+p.info {
+  position: absolute;
+  bottom: 55px;
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* Fix modal backdrop for smaller devices */
+@media (max-width: 679px) {
+  .active .modal-backdrop-bg {
+    opacity: .5;
+  }
+  .modal-backdrop-bg {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+  }
+}
+
+.txt-xx-small-font {
+  font-size: xx-small !important;
+}
+
+.float-left {
+  float: left !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.m-left30 {
+  margin-left: 30% !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.xxsmall {
+  font-size: xx-small !important;
+}
+
+.pfilter-modal {
+  top: 2% !important;
+  right: 3% !important;
+  left: 2% !important;
+  width: 96% !important;
+  border: 1px solid #D9DCDE;
+  @include btn-rounded-corner(5px);
+  min-height: 70% !important;
+}
+
+.gray-clr {
+  color: gray !important;
+}
+
+.spinner svg {
+  /*width: 28px;
+  height: 28px;*/
+  stroke: #FFF;
+  fill: #FFF;
+}
+
+.loading {
+  @extend .transparent;
+}
+
+.mtop0 {
+  margin-top: 0px !important;
+}
+
+.w50 {
+  width: 50% !important;
+}
+
+.icons {
+  @extend .button;
+  @extend .button-clear;
+  @extend .button-assertive;
+}
+
+.r-icons {
+  @extend .icons;
+  @extend .float-right;
+}
+
+.l-icons {
+  @extend .icons;
+  @extend .float-left;
+}
+
+.m-top1 {
+  margin-top: 1% !important;
+}
+
+.m-top-2 {
+  margin-top: -2% !important;
+}
+
+.m-top-3 {
+  margin-top: -3% !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.ml83 {
+  margin-left: 83% !important;
+}
+
+.platform-android .action-sheet-cancel {
+    display: block !important;
+}
+
+.my-imgs {
+  border-radius: 10%;
+}
+
+.grid-imgs {
+  max-width: 80px;
+  max-height: 80px;
+  width: 100%;
+  height: 100%;
+}
+
+.retry-card {
+  margin-top: 65% !important;
+}
+
+.xxx-large {
+  font-size: -webkit-xxx-large;
+}
+
+.large {
+  font-size: large !important;
+}
+
+.custom-menu {
+
+}
+
+/*.menu .item {
+  background-color: $royal;
+}
+
+.menu .scroll {
+  background-color: $royal;
+}*/
+
+.button {
+  @extend .open-sans-semibold;
+}
+
+.menu-left .has-header {
+  top: 0px !important;
+}
+
+.bg-clr {
+  background-image: url("../img/banner.jpg");
+}
+
+.banner {
+  @extend .bg-clr;
+  border-style: none !important;
+  height: 150px !important;
+}
+
+.menu-left .item-avatar {
+  min-height: 150px !important;
+}
+
+.banner-img {
+  top: 50px !important;
+}
+
+.banner-h2 {
+  @extend .white-clr;
+  margin-top: 34px !important;
+}
+
+.white-clr {
+  color: #fff !important;
+}
+
+.action-sheet .button {
+  color: #444 !important;
+}

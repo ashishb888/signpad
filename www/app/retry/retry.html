@@ -1,0 +1,17 @@
+<ion-view side="right" view-title="Retry" title="Retry" hide-back-button="true" hide-nav-bar="true">
+  <ion-content scroll="false">
+    <div class="retry-card padding">
+      <div class="padding">
+        <p class="txt-ctr-align xxx-large">
+          <i class="icon ion-wifi"></i>
+        </p>
+        <p class="txt-ctr-align">
+          {{rc.noConnMsg}}
+        </p>
+        <button class="button button-small button-full button-assertive" ng-click="rc.retry()">
+          Retry
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

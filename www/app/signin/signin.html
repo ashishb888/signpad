@@ -1,0 +1,42 @@
+<ion-view side="right" view-title="Sign in" title="Sign in" hide-back-button="true" hide-nav-bar="false">
+  <ion-content class="">
+    <div class="padding">
+      <div class="logo center">
+      </div>
+    </div>
+    <div class="list">
+      <form name="signinForm" novalidate>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Mobile number</span>
+          <input type="tel" placeholder="Mobile number" ng-model="signinCtrl.sf.phone" ng-required="true" ng-minlength="10" ng-maxlength="10">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="Password" ng-model="signinCtrl.sf.password" ng-required="true" ng-minlength="6">
+        </label>
+        <div class="padding">
+          <button class="button button-full button-small button-assertive" ng-disabled="signinForm.$invalid" ng-click="signinCtrl.signin()">
+            Sign in
+          </button>
+          <!--<button class="button button-full button-assertive" ui-sref="signup">
+            Sign up
+          </button>
+          <button class="button button-full button-assertive" ui-sref="forgotpassword">
+            Forgot password?
+          </button>-->
+          <!--<button class="button button-primary button-block " ng-click="checkForUpdates()">
+            Check for updates
+          </button>
+
+          <button class="button button-stable button-block button-pulse" ng-if="hasUpdate" ng-click="doUpdate()">
+            Download update
+          </button>-->
+        </div>
+        <div class="row padding">
+          <div class="signin-su" ui-sref="signup">Sign up</div>
+          <div class="signin-fp" ui-sref="forgotpassword">Forgot password?</div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

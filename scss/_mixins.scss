@@ -1,0 +1,27 @@
+@mixin btn-rounded-corner($pixs) {
+    border-radius: $pixs !important;
+}
+
+@mixin text-case($case) {
+    text-transform: $case !important;
+}
+
+@mixin text-font($font) {
+    font-family: $font !important;
+}
+
+@mixin sweet-blank-label($bg-clr, $bdr-clr, $height) {
+	background: $bg-clr;
+    display: block;
+    border: solid $bdr-clr;
+    height: $height;
+    display: block;
+    border-width: 1px 0px 1px 0px;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}

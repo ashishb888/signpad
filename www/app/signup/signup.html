@@ -1,0 +1,65 @@
+<ion-view side="right" view-title="Sign up" title="Sign up" hide-back-button="true" hide-nav-bar="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear float-left" ui-sref="signin">
+      <i class="icon ion-android-arrow-back"></i>
+    </button>
+    <!--<button class="button button-clear" ui-sref="signin">
+      <i class="xlarge ion-android-arrow-back"></i>
+    </button>-->
+  </ion-nav-buttons>
+  <ion-content class="">
+    <div class="list">
+      <form name="signupForm" novalidate>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Full name</span>
+          <input type="text" name="fullName" placeholder="Full name" ng-model="sc.sf.fullName" ng-required="true" ng-minlength="5" ng-maxlength="20">
+          <div class="app-error" ng-messages="signupForm.fullName.$error" ng-if="signupForm.fullName.$dirty">
+            <div ng-message="required">Name is required.</div>
+            <div ng-message="minlength">Name must be at least 5 characters long.</div>
+            <div ng-message="maxlength">Name can be at most 20 characters long.</div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Mobile number</span>
+          <input type="tel" name="phone" placeholder="Mobile number" ng-model="sc.sf.phone" ng-required="true" ng-minlength="10" ng-maxlength="10">
+          <div class="app-error" ng-messages="signupForm.phone.$error" ng-if="signupForm.phone.$dirty">
+            <div ng-message="required">Mobile number is required.</div>
+            <div ng-message="tel">Enter a valid mobile number.</div>
+            <div ng-message="minlength">Mobile number must be at least 10 digits long.</div>
+            <div ng-message="maxlength">Mobile number can be at most 10 digits long.</div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email(optional)</span>
+          <input type="email" name="email" placeholder="Email(optional)" ng-model="sc.sf.email">
+          <div class="app-error" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$dirty">
+            <div ng-message="email">Enter a valid email address.</div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+          <input type="password" name="password" placeholder="Password" ng-model="sc.sf.password" ng-required="true" ng-minlength="6">
+          <div class="app-error" ng-messages="signupForm.password.$error" ng-if="signupForm.password.$dirty">
+            <div ng-message="required">Password is required.</div>
+            <div ng-message="minlength">Password must be at least 6 characters long.</div>
+            <div ng-message="maxlength">Password can be at most 12 characters long.</div>
+          </div>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Re-type password</span>
+          <input type="password" name="rePassword" placeholder="Re-type password" ng-model="sc.sf.rePassword" ng-required="true" ng-minlength="6">
+          <div class="app-error" ng-messages="signupForm.rePassword.$error" ng-if="signupForm.rePassword.$dirty">
+            <div ng-message="required">Password is required.</div>
+            <div ng-message="minlength">Password must be at least 6 characters long.</div>
+            <div ng-message="maxlength">Password can be at most 12 characters long.</div>
+          </div>
+        </label>
+        <div class="padding">
+          <button class="button button-full button-small button-assertive" ng-disabled="signupForm.$invalid" ng-click="sc.signup()">
+            Sign up
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>
