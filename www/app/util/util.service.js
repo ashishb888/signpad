@@ -25,8 +25,26 @@
     us.insertQuery = insertQuery;
     us.toastMessage = toastMessage;
     us.noNetwork = noNetwork;
+    us.base64 = base64;
 
     // Functions definations
+    function base64(path) {
+      try {
+        var pathArr = path.split("/");
+        var fileNm = encodeURI(pathArr.pop());
+
+        return $cordovaFile.readAsDataURL(pathArr.join("/"), fileNm)
+          .then(function(fileData) {
+            //logger.debug("fileData: " + fileData);
+            return fileData.split(',').pop();
+          }, function(error) {
+            logger.error("error: " + JSON.stringify(error));
+          });
+      } catch (exception) {
+        logger.error("exception: " + exception);
+      }
+    }
+
     function noNetwork() {
       try {
         logger.debug("noNetwork service");

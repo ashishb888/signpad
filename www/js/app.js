@@ -37,8 +37,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages'])
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
-      StatusBar.backgroundColorByHexString("#886aea");
+      // StatusBar.backgroundColorByHexString("#886aea");
+      StatusBar.backgroundColorByHexString("#392675");
     }
+
+    // Double tap to exit app
+    hwBackBtnService.tapToExit();
   });
 
   eventsService.startEvents();

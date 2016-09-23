@@ -26,7 +26,8 @@ angular.module('starter').constant('starterConfig', (function() {
     home: "home",
     signup: "signup",
     retry: "retry",
-    register: "register"
+    register: "register",
+    pan: "pan"
   };
   var screenTitles = {
     home: "Home",
@@ -45,7 +46,7 @@ angular.module('starter').constant('starterConfig', (function() {
   // Photos properties
   var picSrc = {
     camera: "camera",
-    galary: "galary"
+    gallery: "gallery"
   };
   var picProps = {
     quality: 50,
@@ -55,6 +56,9 @@ angular.module('starter').constant('starterConfig', (function() {
   var toastMsgs = {
     appExit: "Press BACK again to exit."
   };
+  var tapToExitStates = [appStates.pan];
+  var onlineState = appStates.pan;
+
   switch (env) {
     case envLs.prod:
       ws = urls.prod;
@@ -84,7 +88,9 @@ angular.module('starter').constant('starterConfig', (function() {
     picSrc: picSrc,
     picProps: picProps,
     toastMsgs: toastMsgs,
-    offlineStates: offlineStates
+    offlineStates: offlineStates,
+    tapToExitStates: tapToExitStates,
+    onlineState: onlineState
   };
 
 })());

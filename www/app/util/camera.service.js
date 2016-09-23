@@ -30,7 +30,7 @@
           case sConfig.picSrc.camera:
             sType = Camera.PictureSourceType.CAMERA;
             break;
-          case sConfig.picSrc.galary:
+          case sConfig.picSrc.gallery:
             sType = Camera.PictureSourceType.PHOTOLIBRARY;
             break;
           default:
@@ -45,7 +45,8 @@
           quality: quality,
           targetWidth: width,
           targetHeight: height,
-          correctOrientation: true
+          correctOrientation: true,
+          allowEdit: true
         }
         var imageData = {};
         return $cordovaCamera.getPicture(options)
@@ -53,7 +54,7 @@
             logger.debug("imageURI: " + imageURI);
             imageData.uri = [imageURI];
             return imageData;
-            /*if(sConfig.picSrc.galary === srcType)
+            /*if(sConfig.picSrc.gallery === srcType)
               return imageData;*/
 
             /*var pathArr = imageURI.split("/");

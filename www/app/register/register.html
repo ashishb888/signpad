@@ -1,15 +1,23 @@
-<ion-view side="right" view-title="Register" title="Register" hide-back-button="true" hide-nav-bar="false">
+<ion-view side="right" view-title="Register" hide-back-button="true" hide-nav-bar="false">
   <ion-nav-buttons side="left">
     <button class="button button-clear float-left" ui-sref="pan">
       <i class="icon ion-android-arrow-back"></i>
     </button>
-    <!--<button class="button button-clear" ui-sref="signin">
-      <i class="xlarge ion-android-arrow-back"></i>
-    </button>-->
   </ion-nav-buttons>
   <ion-content class="">
     <div class="list">
       <form name="registerForm" novalidate>
+        <img src="./img/edelweiss-logo.jpg" id="img" alt="" />
+        <div class="padding txt-ctr-align">
+          <canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>
+        </div>
+        <!--<canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>-->
+        <div class='button-bar padding'>
+          <a class='button button-royal button-small' ng-click='clearCanvas()'>Clear</a>
+          <a class='button button-royal button-small' ng-click='saveCanvas()'>Save</a>
+        </div>
+        <br>
+        <img ng-src='{{signature}}' />
         <!---->
         <label class="item item-input item-floating-label">
           <span class="input-label">Full name</span>
@@ -51,14 +59,15 @@
             <i class="icon ion-camera float-right xlarge gray-clr" ng-click="rc.imgsActionSheet()"></i>
           </div>
         </div>
-        <div class="card">
+        <div class="card" ng-show="rc.isChequeImg">
           <div class="item item-text-wrap txt-ctr-align">
             <img class="w50" ng-src="data:image/jpg;base64,{{rc.rf.chequeImgBase64}}" ng-click="epc.largeImg('dp')">
           </div>
         </div>
 
         <div class="padding">
-          <button class="button button-full button-small button-royal" ng-disabled="registerForm.$invalid" ng-click="sc.signup()">
+          <button class="button button-full button-small button-royal" ng-disabled="registerForm.$invalid"
+              ng-click="sc.signup()">
             Register
           </button>
         </div>

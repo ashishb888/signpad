@@ -16,7 +16,6 @@
       }
     </script>-->
 
-
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
 
@@ -26,6 +25,7 @@
     <!-- Bower libs -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src='lib/signature_pad/signature_pad.js'></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -46,12 +46,15 @@
     <!-- Modules JSs -->
     <script src="app/retry/retry.ctrl.js"></script>
 
+    <script src="app/pan/pan.service.js"></script>
     <script src="app/pan/pan.ctrl.js"></script>
+
+    <script src="app/register/register.service.js"></script>
     <script src="app/register/register.ctrl.js"></script>
 
   </head>
 
-  <body ng-app="starter">
+  <body ng-app="starter" class="open-sans">
     <ion-nav-bar class="bar-royal">
     </ion-nav-bar>
     <ion-pane>

@@ -3,11 +3,12 @@
 
   RegisterCtrl.$inject = ['$state', 'starterConfig', 'utilService',
     '$ionicHistory', 'lsService', '$rootScope', 'cameraService',
-    '$ionicActionSheet'
+    '$ionicActionSheet', '$scope'
   ];
 
   function RegisterCtrl($state, sConfig, utilService,
-    $ionicHistory, lsService, $rootScope, cameraService, $ionicActionSheet) {
+    $ionicHistory, lsService, $rootScope, cameraService, $ionicActionSheet,
+    $scope) {
     // Variables section
     var logger = utilService.getLogger();
 
@@ -18,6 +19,7 @@
 
     rc.rf = {};
     rc.rf.chequeImgBase64;
+    rc.isChequeImg = false;
 
     // Functions section
     rc.register = register;
@@ -51,7 +53,8 @@
           logger.debug("imageData: " + JSON.stringify(imageData));
           utilService.base64(imageData.uri[0])
             .then(function(sucResp) {
-              chequeImgBase64 = sucResp;
+              rc.isChequeImg = true;
+              rc.rf.chequeImgBase64 = sucResp;
             }, function(errResp) {
               logger.error("errResp: " + JSON.stringify(errResp));
             });
@@ -70,7 +73,7 @@
           case sConfig.picSrc.camera:
             return cameraService.clickImage(srcType);
             break;
-          case sConfig.picSrc.galary:
+          case sConfig.picSrc.gallery:
             return cameraService.selectImage(nImgs);
             break;
           default:
@@ -85,7 +88,7 @@
       logger.debug("imgsActionSheet function");
 
       var hideImgsActionSheet = $ionicActionSheet.show({
-        titleText: "Select an image",
+        titleText: "Choose source type",
         buttons: [{
           text: "<i class='txt-color icon ion-camera'></i> Camera"
         }, {
@@ -105,7 +108,7 @@
               addImgs('', sConfig.picSrc.camera);
               break;
             case 1:
-              addImgs('', sConfig.picSrc.gallary);
+              addImgs('', sConfig.picSrc.gallery);
               break;
             case 2:
               hideImgsActionSheet();
@@ -114,6 +117,34 @@
           return true;
         }
       });
+    }
+
+    var signaturePad;
+    var img = new Image(); // Create new img element
+    var canvas = document.getElementById('signatureCanvas');
+    var ctx = canvas.getContext("2d");
+    // img.src = '../img/edelweiss-logo.jpg'; // Set source path
+    
+    /*img.onload = function() {
+      signaturePad = new SignaturePad(canvas);   
+      ctx.drawImage(img, 0, 0);   
+    };*/
+
+    signaturePad = new SignaturePad(canvas);   
+    ctx.drawImage(document.getElementById('img'), 0, 0);   
+
+    //img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png'; // Dont work
+    img.src = "../img/edelweiss-logo.jpg";
+
+    //var signaturePad = new SignaturePad(canvas);
+
+    $scope.clearCanvas = function() {
+      signaturePad.clear();
+    }
+
+    $scope.saveCanvas = function() {
+      var sigImg = signaturePad.toDataURL();
+      $scope.signature = sigImg;
     }
 
     logger.debug("RegisterCtrl end");

@@ -70,11 +70,11 @@
 
 .logo {
   @extend .c-center;
-  content: url("../img/edelweiss-logo.jpg");
+  content: url("../img/edelweiss-logo.png");
   margin-top: 15%;
-  margin-bottom: 5%;
+  margin-bottom: 25%;
   width: 90%;
-  @include border-radius(15px);
+  /*@include border-radius(15px);*/
 }
 
 .bold {

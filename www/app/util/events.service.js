@@ -51,7 +51,7 @@
             disableBack: true
           });
           $state.go(sConfig.appStates.retry, {
-            "state": sConfig.appStates.menu_db
+            "state": sConfig.onlineState
           });
         }
 
@@ -69,7 +69,7 @@
           disableBack: true
         });
 
-        $state.go(sConfig.appStates.menu_db);
+        $state.go(sConfig.onlineState);
 
         utilService.toastMessage(sConfig.msgs.connMsg);
       } catch (exception) {

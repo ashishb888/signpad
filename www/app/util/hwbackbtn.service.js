@@ -7,6 +7,8 @@
   function hwBackBtnService($ionicPlatform, utilService, $cordovaToast,
     $timeout, $ionicHistory, sConfig, $state) {
     var logger = utilService.getLogger();
+    logger.debug("hwBackBtnService service");
+
     this.HWBackbtnDeregister = undefined;
 
     this.disableHWBackBtn = function() {
@@ -34,8 +36,7 @@
       $ionicPlatform.registerBackButtonAction(function(e) {
         var currentState = $ionicHistory.currentStateName();
 
-        if (currentState == sConfig.appStates.signin || currentState ==
-          sConfig.appStates.menu_db) {
+        if (sConfig.tapToExitStates.includes(currentState)) {
           if (backBtnCnt == 0) {
             backBtnCnt++;
             $cordovaToast.showShortBottom(sConfig.toastMsgs.appExit).then(
