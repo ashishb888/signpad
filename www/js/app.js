@@ -203,6 +203,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages'])
 
   $stateProvider
 
+  .state("consents", {
+    url: "/consents",
+    templateUrl: "app/consents/consents.html",
+    controller: "ConsentsCtrl as cc"
+  })
+
   .state("welcome", {
     url: "/welcome",
     templateUrl: "app/welcome/welcome.html"

@@ -22,15 +22,56 @@
     rc.rf.signedChequeImgBase64;
     rc.isChequeImg = false;
 
+    // Canvas objects
+    var chequeSignaturePad;
+
     // Functions section
     rc.register = register;
     rc.imgsActionSheet = imgsActionSheet;
     rc.clearCanvas = clearCanvas;
     rc.saveCanvas = saveCanvas;
+    rc.imgToCanvas = imgToCanvas;
+    rc.clearChequeCanvas = clearChequeCanvas;
+    rc.saveChequeCanvas = saveChequeCanvas;
 
     // Local functions
     var addImgs = addImgs;
     var getImages = getImages;
+
+    // Functions definations
+    function clearChequeCanvas() {
+      logger.debug("clearChequeCanvas function");
+
+      chequeSignaturePad.clear();
+    }
+
+    function saveChequeCanvas() {
+      logger.debug("saveChequeCanvas function");
+
+      rc.rf.signedChequeImgBase64 = chequeSignaturePad.toDataURL("image/png");
+    }
+
+    function imgToCanvas(base64) {
+      try {
+        logger.debug("imgToCanvas function");
+
+        //var img = new Image(); // Create new img element
+        var canvas = document.getElementById("signChequeCanvas");
+        /*var ctx = canvas.getContext("2d");
+        img.src = "data:image/jpg;base64," + base64; // Set source path
+
+        img.onload = function() {
+          chequeSignaturePad = new SignaturePad(canvas);   
+          ctx.drawImage(img, 0, 0);   
+        };*/
+
+        chequeSignaturePad = new SignaturePad(canvas);
+        chequeSignaturePad.fromDataURL("data:image/jpg;base64," + base64);
+      } catch (exception) {
+        logger.error("exception: " + exception);
+      }
+    }
+
 
     function register() {
       try {
@@ -58,6 +99,7 @@
             .then(function(sucResp) {
               rc.isChequeImg = true;
               rc.rf.chequeImgBase64 = sucResp;
+              rc.imgToCanvas(sucResp);
             }, function(errResp) {
               logger.error("errResp: " + JSON.stringify(errResp));
             });
@@ -122,23 +164,29 @@
       });
     }
 
-    var signaturePad;
+    /*var signaturePad;
     var img = new Image(); // Create new img element
     var canvas = document.getElementById('signatureCanvas');
-    var ctx = canvas.getContext("2d");
-    img.src = '../img/edelweiss-logo.jpg'; // Set source path
+    var ctx = canvas.getContext("2d");*/
+    /*img.src = '../img/edelweiss-logo.jpg'; // Set source path
 
     img.onload = function() {
       signaturePad = new SignaturePad(canvas);   
-      ctx.drawImage(img, 0, 0);   
-    };
+      ctx.drawImage(img, 10, 10);   
+    };*/
+
+    /*signaturePad = new SignaturePad(canvas); */
 
     function clearCanvas() {
+      logger.debug("saveCanvas function");
+
       signaturePad.clear();
     }
 
     function saveCanvas() {
-      rc.rf.signedChequeImgBase64 = signaturePad.toDataURL("image/png");
+      logger.debug("saveCanvas function");
+
+      rc.testImg = signaturePad.toDataURL("image/png");
     }
 
     logger.debug("RegisterCtrl end");

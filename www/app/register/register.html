@@ -7,20 +7,17 @@
   <ion-content class="">
     <div class="list">
       <form name="registerForm" novalidate>
-        <!--<img src="./img/edelweiss-logo.jpg" id="img" alt="" />-->
-        <div class="padding txt-ctr-align">
+        <!--<div class="padding txt-ctr-align">
           <canvas id='signatureCanvas' class="sborder" width='300' height='180'></canvas>
         </div>
-        <!--<canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>-->
         <div class='button-bar padding'>
           <a class='button button-assertive button-small' ng-click='rc.clearCanvas()'>Clear</a>
           <a class='button button-balanced button-small' ng-click='rc.saveCanvas()'>Save</a>
         </div>
         <br>
         <div class="padding txt-ctr-align">
-          <img class="sborder" ng-src='{{rc.rf.signedChequeImgBase64}}' />
-          <!--<canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>-->
-        </div>
+          <img class="sborder" ng-src='{{rc.testImg}}' />
+        </div>-->
 
         <!---->
         <label class="item item-input item-floating-label">
@@ -64,8 +61,21 @@
           </div>
         </div>
         <div class="card" ng-show="rc.isChequeImg">
-          <div class="item item-text-wrap txt-ctr-align">
+          <!--<div class="item item-text-wrap txt-ctr-align">
             <img class="w50" ng-src="data:image/jpg;base64,{{rc.rf.chequeImgBase64}}" ng-click="epc.largeImg('dp')">
+          </div>-->
+
+          <div class="padding txt-ctr-align">
+            <canvas id='signChequeCanvas' class="sborder" width='300' height='180'></canvas>
+          </div>
+
+          <div class='button-bar padding'>
+            <a class='button button-assertive button-small' ng-click='rc.clearChequeCanvas()'>Clear</a>
+            <a class='button button-balanced button-small' ng-click='rc.saveChequeCanvas()'>Save</a>
+          </div>
+          <br>
+          <div class="padding txt-ctr-align">
+            <img class="sborder" ng-src='{{rc.rf.signedChequeImgBase64}}' />
           </div>
         </div>
 

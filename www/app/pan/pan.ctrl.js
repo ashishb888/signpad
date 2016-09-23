@@ -53,8 +53,8 @@
         $timeout(function() {
           $ionicLoading.hide();
           utilService.toastMessage("PAN data matched");
-          $state.go(sConfig.appStates.register);
-        }, 3000);
+          $state.go(sConfig.appStates.consents);
+        }, 2000);
 
         //$state.go(sConfig.appStates.register);
       } catch (exception) {

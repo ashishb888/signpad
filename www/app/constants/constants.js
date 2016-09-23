@@ -27,7 +27,8 @@ angular.module('starter').constant('starterConfig', (function() {
     signup: "signup",
     retry: "retry",
     register: "register",
-    pan: "pan"
+    pan: "pan",
+    consents: "consents"
   };
   var screenTitles = {
     home: "Home",

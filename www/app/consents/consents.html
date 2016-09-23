@@ -1,0 +1,21 @@
+<ion-view side="right" view-title="Consents" hide-back-button="true" hide-nav-bar="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear float-left" ui-sref="pan">
+      <i class="icon ion-android-arrow-back"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <form name="consentsForm" novalidate>
+        <div class="padding gray-clr consents-msg txt-ctr-align">
+          Your EYC is upto date
+        </div>
+        <div class="padding">
+          <button class="button button-full button-small button-royal" ng-click="cc.consents()">
+            Proceed
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>
