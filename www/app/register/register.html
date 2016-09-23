@@ -7,17 +7,21 @@
   <ion-content class="">
     <div class="list">
       <form name="registerForm" novalidate>
-        <img src="./img/edelweiss-logo.jpg" id="img" alt="" />
+        <!--<img src="./img/edelweiss-logo.jpg" id="img" alt="" />-->
         <div class="padding txt-ctr-align">
-          <canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>
+          <canvas id='signatureCanvas' class="sborder" width='300' height='180'></canvas>
         </div>
         <!--<canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>-->
         <div class='button-bar padding'>
-          <a class='button button-royal button-small' ng-click='clearCanvas()'>Clear</a>
-          <a class='button button-royal button-small' ng-click='saveCanvas()'>Save</a>
+          <a class='button button-assertive button-small' ng-click='rc.clearCanvas()'>Clear</a>
+          <a class='button button-balanced button-small' ng-click='rc.saveCanvas()'>Save</a>
         </div>
         <br>
-        <img ng-src='{{signature}}' />
+        <div class="padding txt-ctr-align">
+          <img class="sborder" ng-src='{{rc.rf.signedChequeImgBase64}}' />
+          <!--<canvas id='signatureCanvas' width='300' height='180' style='border: 1px solid black;'></canvas>-->
+        </div>
+
         <!---->
         <label class="item item-input item-floating-label">
           <span class="input-label">Full name</span>

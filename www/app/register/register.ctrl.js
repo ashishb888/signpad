@@ -19,11 +19,14 @@
 
     rc.rf = {};
     rc.rf.chequeImgBase64;
+    rc.rf.signedChequeImgBase64;
     rc.isChequeImg = false;
 
     // Functions section
     rc.register = register;
     rc.imgsActionSheet = imgsActionSheet;
+    rc.clearCanvas = clearCanvas;
+    rc.saveCanvas = saveCanvas;
 
     // Local functions
     var addImgs = addImgs;
@@ -123,28 +126,19 @@
     var img = new Image(); // Create new img element
     var canvas = document.getElementById('signatureCanvas');
     var ctx = canvas.getContext("2d");
-    // img.src = '../img/edelweiss-logo.jpg'; // Set source path
-    
-    /*img.onload = function() {
+    img.src = '../img/edelweiss-logo.jpg'; // Set source path
+
+    img.onload = function() {
       signaturePad = new SignaturePad(canvas);   
       ctx.drawImage(img, 0, 0);   
-    };*/
+    };
 
-    signaturePad = new SignaturePad(canvas);   
-    ctx.drawImage(document.getElementById('img'), 0, 0);   
-
-    //img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png'; // Dont work
-    img.src = "../img/edelweiss-logo.jpg";
-
-    //var signaturePad = new SignaturePad(canvas);
-
-    $scope.clearCanvas = function() {
+    function clearCanvas() {
       signaturePad.clear();
     }
 
-    $scope.saveCanvas = function() {
-      var sigImg = signaturePad.toDataURL();
-      $scope.signature = sigImg;
+    function saveCanvas() {
+      rc.rf.signedChequeImgBase64 = signaturePad.toDataURL();
     }
 
     logger.debug("RegisterCtrl end");
