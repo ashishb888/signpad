@@ -20,6 +20,10 @@
               ng-click="pc.verifyPAN()">
             Verify PAN
           </button>
+          <button class="button button-full button-small button-royal" ng-disabled="panForm.$invalid"
+              ng-click="pc.verifyPANFail()">
+            Verify PAN(FAIL)
+          </button>
         </div>
       </form>
     </div>

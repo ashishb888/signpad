@@ -57,7 +57,7 @@
 
         var canvas = document.getElementById("signChequeCanvas");
         chequeSignaturePad = new SignaturePad(canvas);
-        chequeSignaturePad.fromDataURL("data:image/jpg;base64," + base64);
+        // chequeSignaturePad.fromDataURL("data:image/jpg;base64," + base64);
       } catch (exception) {
         logger.error("exception: " + exception);
       }
