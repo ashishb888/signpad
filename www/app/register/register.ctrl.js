@@ -138,7 +138,7 @@
     }
 
     function saveCanvas() {
-      rc.rf.signedChequeImgBase64 = signaturePad.toDataURL();
+      rc.rf.signedChequeImgBase64 = signaturePad.toDataURL("image/png");
     }
 
     logger.debug("RegisterCtrl end");
