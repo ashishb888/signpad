@@ -1,0 +1,27 @@
+<ion-view side="right" hide-back-button="true" hide-nav-bar="true">
+  <ion-content class="">
+    <div class="padding">
+      <div class="logo center">
+      </div>
+    </div>
+    <div class="list">
+      <form name="aadharForm" novalidate>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Aadhar number</span>
+          <input type="number" name="aadhar" placeholder="Aadhar number" ng-model="aadharForm.pf.phone" ng-required="true" ng-minlength="12" ng-maxlength="12">
+          <div class="app-error" ng-messages="aadharForm.aadhar.$error" ng-if="aadharForm.aadhar.$dirty">
+            <div ng-message="required">Aadhar is required.</div>
+            <div ng-message="minlength">Aadhar must be at least 12 characters long.</div>
+            <div ng-message="maxlength">Aadhar can be at most 12 characters long.</div>
+          </div>
+        </label>
+        <div class="padding">
+          <button class="button button-full button-small button-royal" ng-disabled="aadharForm.$invalid"
+              ng-click="ac.sendOTP()">
+            Get OTP
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

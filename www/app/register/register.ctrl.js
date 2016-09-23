@@ -55,23 +55,13 @@
       try {
         logger.debug("imgToCanvas function");
 
-        //var img = new Image(); // Create new img element
         var canvas = document.getElementById("signChequeCanvas");
-        /*var ctx = canvas.getContext("2d");
-        img.src = "data:image/jpg;base64," + base64; // Set source path
-
-        img.onload = function() {
-          chequeSignaturePad = new SignaturePad(canvas);   
-          ctx.drawImage(img, 0, 0);   
-        };*/
-
         chequeSignaturePad = new SignaturePad(canvas);
         chequeSignaturePad.fromDataURL("data:image/jpg;base64," + base64);
       } catch (exception) {
         logger.error("exception: " + exception);
       }
     }
-
 
     function register() {
       try {

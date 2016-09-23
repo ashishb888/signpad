@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-royal">
+    <h1 class="title txt-ctr-align">
+    <button class="button button-clear float-left m-top1" ng-click="ac.hideOTPModal()">
+      <i class="icon ion-android-arrow-back"></i>
+    </button>
+    </h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <form name="otpForm" novalidate>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">OTP</span>
+          <input type="number" name="otp" placeholder="OTP" ng-model="otpForm.pf.phone" ng-required="true" ng-minlength="6" ng-maxlength="6">
+        </label>
+        <div class="padding">
+          <button class="button button-full button-small button-royal" ng-disabled="otpForm.$invalid"
+              ng-click="ac.verifyOTP()">
+            Verify OTP
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-modal-view>

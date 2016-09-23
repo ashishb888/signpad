@@ -203,6 +203,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages'])
 
   $stateProvider
 
+  .state("aadhar", {
+    url: "/aadhar",
+    templateUrl: "app/aadhar/aadhar.html",
+    controller: "AadharCtrl as ac"
+  })
+
   .state("consents", {
     url: "/consents",
     templateUrl: "app/consents/consents.html",

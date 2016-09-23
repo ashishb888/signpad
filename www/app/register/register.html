@@ -1,24 +1,15 @@
 <ion-view side="right" view-title="Register" hide-back-button="true" hide-nav-bar="false">
   <ion-nav-buttons side="left">
-    <button class="button button-clear float-left" ui-sref="pan">
+    <button class="button button-clear float-left" ng-click="$ionicGoBack()">
       <i class="icon ion-android-arrow-back"></i>
     </button>
   </ion-nav-buttons>
   <ion-content class="">
     <div class="list">
       <form name="registerForm" novalidate>
-        <!--<div class="padding txt-ctr-align">
-          <canvas id='signatureCanvas' class="sborder" width='300' height='180'></canvas>
+        <div class="division padding">
+          Basic details
         </div>
-        <div class='button-bar padding'>
-          <a class='button button-assertive button-small' ng-click='rc.clearCanvas()'>Clear</a>
-          <a class='button button-balanced button-small' ng-click='rc.saveCanvas()'>Save</a>
-        </div>
-        <br>
-        <div class="padding txt-ctr-align">
-          <img class="sborder" ng-src='{{rc.testImg}}' />
-        </div>-->
-
         <!---->
         <label class="item item-input item-floating-label">
           <span class="input-label">Full name</span>
@@ -27,6 +18,17 @@
             <div ng-message="required">Name is required.</div>
             <div ng-message="minlength">Name must be at least 5 characters long.</div>
             <div ng-message="maxlength">Name can be at most 20 characters long.</div>
+          </div>
+        </label>
+
+        <!---->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">User ID</span>
+          <input type="text" name="userId" placeholder="User ID" ng-model="sc.sf.userId" ng-required="true" ng-minlength="5" ng-maxlength="10">
+          <div class="app-error" ng-messages="registerForm.userId.$error" ng-if="registerForm.userId.$dirty">
+            <div ng-message="required">User ID is required.</div>
+            <div ng-message="minlength">User ID must be at least 5 characters long.</div>
+            <div ng-message="maxlength">User ID can be at most 10 characters long.</div>
           </div>
         </label>
 
@@ -51,10 +53,14 @@
           </div>
         </label>
 
+        <div class="division padding">
+          Images
+        </div>
+
         <!---->
         <div class="row padding">
           <div class="col col-80 gray-clr">
-            Add image
+            Cheque
           </div>
           <div class="col col-20">
             <i class="icon ion-camera float-right xlarge gray-clr" ng-click="rc.imgsActionSheet()"></i>
@@ -79,6 +85,31 @@
           </div>
         </div>
 
+        <div class="division padding">
+          Bank details
+        </div>
+
+        <!---->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Account number</span>
+          <input type="number" name="accountNo" placeholder="Account number" ng-model="sc.sf.accountNo" ng-required="true" ng-minlength="11" ng-maxlength="20">
+          <div class="app-error" ng-messages="registerForm.accountNo.$error" ng-if="registerForm.accountNo.$dirty">
+            <div ng-message="required">Account number is required.</div>
+            <div ng-message="minlength">Account number must be at least 11 characters long.</div>
+            <div ng-message="maxlength">Account number can be at most 20 characters long.</div>
+          </div>
+        </label>
+
+        <!---->
+        <label class="item item-input item-floating-label">
+          <span class="input-label">IFS code</span>
+          <input type="text" name="ifsc" placeholder="IFS code" ng-model="sc.sf.ifsc" ng-required="true" ng-minlength="5" ng-maxlength="10">
+          <div class="app-error" ng-messages="registerForm.ifsc.$error" ng-if="registerForm.ifsc.$dirty">
+            <div ng-message="required">IFS code is required.</div>
+            <div ng-message="minlength">IFS code must be at least 5 characters long.</div>
+            <div ng-message="maxlength">IFS code can be at most 10 characters long.</div>
+          </div>
+        </label>
         <div class="padding">
           <button class="button button-full button-small button-royal" ng-disabled="registerForm.$invalid"
               ng-click="sc.signup()">

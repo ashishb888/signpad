@@ -373,3 +373,9 @@ p.info {
 .consents-msg {
   margin-top: 30%;
 }
+
+.division {
+  background: $stable;
+  color: $positive;
+  @extend .open-sans-bold;
+}
