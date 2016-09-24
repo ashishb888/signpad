@@ -1,0 +1,29 @@
+<ion-view side="right" view-title="Payment gateway" hide-back-button="true" hide-nav-bar="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear float-left" ng-click="$ionicGoBack()">
+      <i class="icon ion-android-arrow-back"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <form name="pgForm" novalidate>
+        <div class="division padding">
+          Select bank
+        </div>
+
+        <!---->
+        <ion-radio ng-required="true" ng-model="bank" ng-value="'SBI'">State Bank of India</ion-radio>
+        <ion-radio ng-required="true" ng-model="bank" ng-value="'HDFC'">HDFC</ion-radio>
+        <ion-radio ng-required="true" ng-model="bank" ng-value="'ICICI'">ICICI</ion-radio>
+        <ion-radio ng-required="true" ng-model="bank" ng-value="'YES'">YES Bank</ion-radio>
+        <ion-radio ng-required="true" ng-model="bank" ng-value="'BOI'">Bank of India</ion-radio>
+        <div class="padding">
+          <button class="button button-full button-small button-royal" ng-click="pgc.makePayment()"
+              ng-disabled="pgForm.$invalid">
+            Make payment
+          </button>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

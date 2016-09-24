@@ -54,7 +54,7 @@
         </label>
 
         <div class="division padding">
-          Sign & cheque
+          Cheque image
         </div>
 
         <!---->
@@ -66,12 +66,18 @@
             <i class="icon ion-camera float-right xlarge gray-clr" ng-click="rc.imgsActionSheet()"></i>
           </div>
         </div>
-        <div class="card" ng-show="rc.isChequeImg">
+        <div class="padding" ng-show="rc.rf.chequeImgBase64">
           <div class="item item-text-wrap txt-ctr-align">
             <img class="w90" ng-src="data:image/jpg;base64,{{rc.rf.chequeImgBase64}}">
           </div>
+        </div>
 
-          <div class="padding txt-ctr-align">
+        <div class="division padding">
+          Signature
+        </div>
+
+        <div class="padding">
+          <div class="txt-ctr-align">
             <canvas id='signChequeCanvas' class="sborder cust-canvas"></canvas>
           </div>
 
@@ -80,7 +86,7 @@
             <a class='button button-balanced button-small' ng-click='rc.saveChequeCanvas()'>Save</a>
           </div>
           <br>
-          <div class="padding txt-ctr-align">
+          <div class="txt-ctr-align" ng-show="rc.isSigned">
             <img class="sborder cust-canvas" ng-src='{{rc.rf.signedChequeImgBase64}}' />
           </div>
         </div>
@@ -112,7 +118,7 @@
         </label>
         <div class="padding">
           <button class="button button-full button-small button-royal" ng-disabled="registerForm.$invalid"
-              ng-click="sc.signup()">
+              ng-click="rc.redirectToPG()">
             Register
           </button>
         </div>

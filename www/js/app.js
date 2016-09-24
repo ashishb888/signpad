@@ -203,6 +203,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngMessages'])
 
   $stateProvider
 
+  .state("pg", {
+    url: "/pg",
+    templateUrl: "app/pg/pg.html",
+    controller: "PGCtrl as pgc"
+  })
+
   .state("aadhar", {
     url: "/aadhar",
     templateUrl: "app/aadhar/aadhar.html",

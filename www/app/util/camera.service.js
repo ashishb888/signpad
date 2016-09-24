@@ -45,8 +45,7 @@
           quality: quality,
           targetWidth: width,
           targetHeight: height,
-          correctOrientation: true/*,
-          allowEdit: true*/
+          correctOrientation: true
         }
         var imageData = {};
         return $cordovaCamera.getPicture(options)

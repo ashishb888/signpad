@@ -3,12 +3,12 @@
 
   RegisterCtrl.$inject = ['$state', 'starterConfig', 'utilService',
     '$ionicHistory', 'lsService', '$rootScope', 'cameraService',
-    '$ionicActionSheet', '$scope'
+    '$ionicActionSheet', '$scope', '$ionicLoading', '$timeout'
   ];
 
   function RegisterCtrl($state, sConfig, utilService,
     $ionicHistory, lsService, $rootScope, cameraService, $ionicActionSheet,
-    $scope) {
+    $scope, $ionicLoading, $timeout) {
     // Variables section
     var logger = utilService.getLogger();
 
@@ -21,6 +21,7 @@
     rc.rf.chequeImgBase64;
     rc.rf.signedChequeImgBase64;
     rc.isChequeImg = false;
+    rc.isSigned = false;
 
     // Canvas objects
     var chequeSignaturePad;
@@ -34,12 +35,43 @@
     rc.imgToCanvas = imgToCanvas;
     rc.clearChequeCanvas = clearChequeCanvas;
     rc.saveChequeCanvas = saveChequeCanvas;
+    rc.initCanvas = initCanvas;
+    rc.redirectToPG = redirectToPG;
 
     // Local functions
     var addImgs = addImgs;
     var getImages = getImages;
 
     // Functions definations
+    function redirectToPG() {
+      try {
+        logger.debug("redirectToPG function");
+
+        $ionicLoading.show({
+          template: '<ion-spinner icon="lines"></ion-spinner>'
+        });
+
+        $timeout(function() {
+          $ionicLoading.hide();
+          utilService.toastMessage("Redirecting to payment gateway");
+          $state.go(sConfig.appStates.pg);
+        }, 2000);
+      } catch (exception) {
+        logger.error("exception: " + exception);
+      }
+    }
+
+    function initCanvas() {
+      try {
+        logger.debug("initCanvas function");
+        canvas = document.getElementById("signChequeCanvas");
+        chequeSignaturePad = new SignaturePad(canvas);
+      } catch (exception) {
+        logger.error("exception: " + exception);
+      }
+    }
+    rc.initCanvas();
+
     function clearChequeCanvas() {
       logger.debug("clearChequeCanvas function");
 
@@ -48,9 +80,10 @@
 
     function saveChequeCanvas() {
       logger.debug("saveChequeCanvas function");
-
+      rc.isSigned = true;
       rc.rf.signedChequeImgBase64 = chequeSignaturePad.toDataURL("image/png");
     }
+
 
     function imgToCanvas(base64) {
       try {
@@ -126,14 +159,13 @@
         logger.debug("addImgs function");
 
         var promise = getImages(srcType, 1);
-        //var promise = getImages("camera", 1);
         promise.then(function(imageData) {
           logger.debug("imageData: " + JSON.stringify(imageData));
           utilService.base64(imageData.uri[0])
             .then(function(sucResp) {
               rc.isChequeImg = true;
               rc.rf.chequeImgBase64 = sucResp;
-              rc.imgToCanvas(sucResp);
+              // rc.imgToCanvas(sucResp);
             }, function(errResp) {
               logger.error("errResp: " + JSON.stringify(errResp));
             });
