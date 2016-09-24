@@ -64,6 +64,7 @@
     function initCanvas() {
       try {
         logger.debug("initCanvas function");
+
         canvas = document.getElementById("signChequeCanvas");
         chequeSignaturePad = new SignaturePad(canvas);
       } catch (exception) {
@@ -255,7 +256,7 @@
       rc.testImg = signaturePad.toDataURL("image/png");
     }
 
-    function resizeCanvas() {
+    /*function resizeCanvas() {
       var ratio = Math.max(window.devicePixelRatio || 1, 1);
       canvas.width = canvas.offsetWidth * ratio;
       canvas.height = canvas.offsetHeight * ratio;
@@ -263,7 +264,7 @@
       chequeSignaturePad.clear(); // otherwise isEmpty() might return incorrect value
     }
 
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);*/
 
     logger.debug("RegisterCtrl end");
   }
