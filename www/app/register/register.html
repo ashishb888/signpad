@@ -54,7 +54,7 @@
         </label>
 
         <div class="division padding">
-          Images
+          Sign & cheque
         </div>
 
         <!---->
@@ -67,12 +67,12 @@
           </div>
         </div>
         <div class="card" ng-show="rc.isChequeImg">
-          <!--<div class="item item-text-wrap txt-ctr-align">
-            <img class="w50" ng-src="data:image/jpg;base64,{{rc.rf.chequeImgBase64}}" ng-click="epc.largeImg('dp')">
-          </div>-->
+          <div class="item item-text-wrap txt-ctr-align">
+            <img class="w90" ng-src="data:image/jpg;base64,{{rc.rf.chequeImgBase64}}">
+          </div>
 
           <div class="padding txt-ctr-align">
-            <canvas id='signChequeCanvas' class="sborder"></canvas>
+            <canvas id='signChequeCanvas' class="sborder cust-canvas"></canvas>
           </div>
 
           <div class='button-bar padding'>
@@ -81,7 +81,7 @@
           </div>
           <br>
           <div class="padding txt-ctr-align">
-            <img class="sborder" ng-src='{{rc.rf.signedChequeImgBase64}}' />
+            <img class="sborder cust-canvas" ng-src='{{rc.rf.signedChequeImgBase64}}' />
           </div>
         </div>
 

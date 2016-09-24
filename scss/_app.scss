@@ -379,3 +379,11 @@ p.info {
   color: $positive;
   @extend .open-sans-bold;
 }
+
+.cust-canvas {
+  width: 95%;
+}
+
+.w90 {
+  width: 90% !important;
+}

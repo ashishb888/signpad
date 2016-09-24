@@ -36,7 +36,7 @@
 
         $timeout(function() {
           $ionicLoading.hide();
-          utilService.toastMessage("PAN data matched");
+          utilService.toastMessage("PAN verification done");
           $state.go(sConfig.appStates.consents);
         }, 2000);
 

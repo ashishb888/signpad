@@ -24,6 +24,7 @@
 
     // Canvas objects
     var chequeSignaturePad;
+    var canvas;
 
     // Functions section
     rc.register = register;
@@ -55,9 +56,52 @@
       try {
         logger.debug("imgToCanvas function");
 
-        var canvas = document.getElementById("signChequeCanvas");
+        canvas = document.getElementById("signChequeCanvas");
+        /*var img = new Image(); // Create new img element
+        var ctx = canvas.getContext("2d");
+        img.src = "data:image/jpg;base64," + base64;
+
+        img.onload = function() {
+          chequeSignaturePad = new SignaturePad(canvas);   
+          ctx.drawImage(img, 0, 0);   
+        };*/
+
+        /*var ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);*/
+
+        /*var img = new Image(); // Create new img element
+        img.width = 200;
+        img.height = 200;
+        canvas.width = 200;
+        var ctx = canvas.getContext("2d");
+
+        img.onload = function() {
+          canvas.height = canvas.width * (img.height / img.width);
+
+          /// step 1 - resize to 50%
+          var oc = document.createElement('canvas'),
+            octx = oc.getContext('2d');
+
+          oc.width = img.width * 0.5;
+          oc.height = img.height * 0.5;
+          octx.drawImage(img, 0, 0, oc.width, oc.height);
+
+          /// step 2 - resize 50% of step 1
+          octx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5);
+
+          /// step 3, resize to final size
+          ctx.drawImage(oc, 0, 0, oc.width * 0.5, oc.height * 0.5,
+            0, 0, canvas.width, canvas.height);
+
+          chequeSignaturePad = new SignaturePad(canvas);   
+        };
+        img.src = "data:image/jpg;base64," + base64;*/
+
         chequeSignaturePad = new SignaturePad(canvas);
-        // chequeSignaturePad.fromDataURL("data:image/jpg;base64," + base64);
+        chequeSignaturePad.fromDataURL("data:image/jpg;base64," + base64);
+        //resizeCanvas();
       } catch (exception) {
         logger.error("exception: " + exception);
       }
@@ -178,6 +222,16 @@
 
       rc.testImg = signaturePad.toDataURL("image/png");
     }
+
+    function resizeCanvas() {
+      var ratio = Math.max(window.devicePixelRatio || 1, 1);
+      canvas.width = canvas.offsetWidth * ratio;
+      canvas.height = canvas.offsetHeight * ratio;
+      canvas.getContext("2d").scale(ratio, ratio);
+      chequeSignaturePad.clear(); // otherwise isEmpty() might return incorrect value
+    }
+
+    window.addEventListener("resize", resizeCanvas);
 
     logger.debug("RegisterCtrl end");
   }
